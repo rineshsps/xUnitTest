@@ -1,13 +1,18 @@
+## Install packages 
 dotnet add package  coverlet.collector
 dotnet add package coverlet.msbuild
 dotnet add package dotnet add package coverlet.msbuild
 dotnet tool install -g dotnet-reportgenerator-globaltool
 
+
+
+##Run below comments for generate report 
 dotnet test
-##dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
 dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit*]\*" /p:CoverletOutput="./TestResults/"
 ReportGenerator.exe -reports:testresults\coverage.cobertura.xml -targetdir:coveragereport
 
+##Report will be available under "coveragereport\index.htm" 
+Open the report & see the coverage.
 
 
     <PackageReference Include="ReportGenerator" Version="4.5.8" />
